@@ -18,12 +18,14 @@ namespace application_for_working_with_numbers
 
 
             string folder_path = Getting_folder_path();
-
-            Autofill_file_numbers(folder_path);
+            //Если необходимо сгенерировать n-е количество файлов с рандомным числом строк в пределах 100-1000, 
+            //где числа принимают значения от 1 до 1000, то следует раскомментировать строку ниже с методом Autofill_file_numbers.
+            //Autofill_file_numbers(folder_path);
 
             List<string> list_directories = Getting_all_file_path(folder_path);
             List<int>  list_numbers = Reading_files(list_directories);
 
+            Console.WriteLine();
             Console.WriteLine($"Всего чисел в файлах: {list_numbers.Count}");
 
             var uniqueElements = list_numbers.Distinct().ToList();
@@ -44,8 +46,7 @@ namespace application_for_working_with_numbers
             Console.WriteLine($"Количество подходящих чисел по условию: {final_list.Count}");
 
             Saving_results(folder_path, final_list);
-            Console.WriteLine("Получившийся результат сохранен в введенном вами каталоге в файле result.txt.");
-
+            
         }
 
         public static string Getting_folder_path()
@@ -173,6 +174,7 @@ namespace application_for_working_with_numbers
                 }
 
                 sw.Close();
+                Console.WriteLine("Получившийся результат сохранен в введенном вами каталоге в файле result.txt.");
             }
             catch (Exception e)
             {
